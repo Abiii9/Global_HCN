@@ -1,8 +1,9 @@
 Test file to check group access
-<<<<<<< HEAD
 Angel Emmanuel
-=======
 adding a lone from codio - Abinaya Elangovan
->>>>>>> 4734df60aa4aa4f5fdd07059724e8e7324532d4e
 
 A new file edit by angel
+
+
+Testing line by (SAIRAJ)
+
