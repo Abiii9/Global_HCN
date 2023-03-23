@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Global Temperature Tracking</title>
+</head>
+<body>
+    <h1>Global temp testing</h1>
+
+    {% for year_obj in years %}
+    <p><b> <a href="{% url 'temp_detail' yearID=year_obj.id %}">{{year_obj}}</a></b></p>
+    {% endfor %}
+</body>
+</html>

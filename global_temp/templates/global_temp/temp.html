@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Individual temp by year Tracking</title>
+</head>
+<body>
+
+    <h1>temp by year Tracking</h1>
+    {% for temp in temps %}
+      <p>This is temp for year {{ temp.year }}</p>
+      <p>{{temp}}</p>
+    {% endfor %}
+
+</body>
+</html>
