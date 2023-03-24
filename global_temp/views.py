@@ -7,7 +7,11 @@ def year_list(request):
     return render(request, 'global_temp/index.html', {'years': years})
 
 def temp_detail(request, yearID):
-    #temps = get_object_or_404(Temperature, year=year)
-    temps = Temperature.objects.filter(year=yearID)
-    return render(request, 'global_temp/temp.html', {'temps': temps})
+#temps = get_object_or_404(Temperature, year=year)
+    temps = Temperature.objects.filter(year=yearID, month=12).values()
+    resTemps = []
+    for temp in temps:
+        resTemps.append(temp)
+    print(resTemps)
+    return render(request, 'global_temp/temp.html', {'temps': resTemps})
 
