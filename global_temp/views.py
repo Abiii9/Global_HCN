@@ -3,15 +3,24 @@ from .models import Year,Temperature
 # Create your views here.
 
 def year_list(request):
+    global years
     years = Year.objects.all()
     return render(request, 'global_temp/index.html', {'years': years})
 
-def temp_detail(request, yearID):
-#temps = get_object_or_404(Temperature, year=year)
-    temps = Temperature.objects.filter(year=yearID, month=12).values()
-    resTemps = []
-    for temp in temps:
-        resTemps.append(temp)
-    print(resTemps)
-    return render(request, 'global_temp/temp.html', {'temps': resTemps})
+# def temp_detail(request):
+# #temps = get_object_or_404(Temperature, year=year)
+#     temps = Temperature.objects.filter(year=yearID, month=monthID).values()
+#     resTemps = []
+#     for temp in temps:
+#         resTemps.append(temp)
+#     print(resTemps)
+#     return render(request, 'global_temp/temp.html', {'temps': resTemps})
+
+def temp_detail(request):
+    if request.method=="POST":
+        yearID = request.POST.get('yearID')
+        monthID = request.POST.get('monthID')
+        temps = Temperature.objects.filter(year=yearID, month=monthID).values()
+        yr = Year.objects.filter(id=yearID)
+    return render(request, 'global_temp/temperature_details.html', {'temp': temps, 'yr':yr, 'month':monthID})
 
