@@ -22,5 +22,6 @@ def temp_detail(request):
         monthID = request.POST.get('monthID')
         temps = Temperature.objects.filter(year=yearID, month=monthID).values()
         yr = Year.objects.filter(id=yearID)
-    return render(request, 'global_temp/temperature_details.html', {'temp': temps, 'yr':yr, 'month':monthID})
+        resTemps = [temp for temp in temps]
+    return render(request, 'global_temp/temp.html', {'temps': resTemps, 'yr':yr, 'month':monthID})
 
