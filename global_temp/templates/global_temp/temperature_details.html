@@ -4,11 +4,16 @@
 {% block content %}
 <h1>View Temperature of various locations by month</h1>
   
- <p><b>The year : {% for y in yr %} {{y}}{%endfor%}</p>
+ <p><b>The year : {{yr}}</p>
+
   
  <p>Month : {{month}}</p></b>
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+ <div id="map" style="display:flex; justify-content:flex-end; width:94%; padding:50; margin:0 0 20px 0;">
+   <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View"></a>
+   
+ </div>
 
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
   <table class="table-bordered mb-0">
         <th>Latitude</th>
         <th>lon_175_180W</th>

@@ -18,9 +18,9 @@
 <center><h4> Choose a year  to view more details </h4>
 <form action="{% url 'temp_detail' %}" method="POST">
   {% csrf_token %}
-  <select name="yearID">
+  <select name="year">
  {% for year_obj in years %}
-  <option value={{year_obj.id}}>{{year_obj}}</option>
+  <option value={{year_obj.year}}>{{year_obj}}</option>
   {%endfor%}
    </select>
 

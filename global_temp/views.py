@@ -7,21 +7,20 @@ def year_list(request):
     years = Year.objects.all()
     return render(request, 'global_temp/index.html', {'years': years})
 
-# def temp_detail(request):
-# #temps = get_object_or_404(Temperature, year=year)
-#     temps = Temperature.objects.filter(year=yearID, month=monthID).values()
-#     resTemps = []
-#     for temp in temps:
-#         resTemps.append(temp)
-#     print(resTemps)
-#     return render(request, 'global_temp/temp.html', {'temps': resTemps})
-
 def temp_detail(request):
     if request.method=="POST":
-        yearID = request.POST.get('yearID')
+        year = request.POST.get('year')
+        year_obj = Year.objects.filter(year=year).first()
         monthID = request.POST.get('monthID')
-        temps = Temperature.objects.filter(year=yearID, month=monthID).values()
-        yr = Year.objects.filter(id=yearID)
-        resTemps = [temp for temp in temps]
-    return render(request, 'global_temp/temp.html', {'temps': resTemps, 'yr':yr, 'month':monthID})
+        temps = Temperature.objects.filter(year=year_obj.id, month=monthID).values()
+        
+    return render(request, 'global_temp/temperature_details.html', {'temp': temps, 'yr':year, 'month':monthID})
+
+
+def map_detail(request, year, month):
+    
+    year_obj = Year.objects.filter(year=year).first()
+    temps = Temperature.objects.filter(year=year_obj.id, month=month).values()
+    resTemps = [temp for temp in temps]
+    return render(request, 'global_temp/temp.html', {'temps': resTemps, 'yr':year, 'month':month})
 
