@@ -52,3 +52,9 @@ table th {
 #map{
     text-align: right;
 }
+
+#chart-wrapper {
+            display: inline-block;
+            position: relative;
+            width: 1200px;
+}

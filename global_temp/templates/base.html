@@ -24,6 +24,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="/static/style.css" >
+        {% block style %} {%endblock %}
 </head>
 
 <body>
@@ -36,11 +37,9 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2
         <div class="collapse navbar-collapse" id="navbar" >
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link"  id="customer" href="/">Home</a>
-                <a class="nav-item nav-link"  id="customer" href="#">Temperature</a> 
-                <a class="nav-item nav-link" id="order" href="#">Maps and Graph</a> 
-                <a class="nav-item nav-link" id="product" href="#">About Us</a> 
-    
-                </div>
+                <a class="nav-item nav-link" id="order" href="/temp/charts/">Charts</a>
+                <a class="nav-item nav-link" id="product" href="#">About Us</a>
+            </div>
         </div>
     </nav>
    
