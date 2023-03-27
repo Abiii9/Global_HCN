@@ -76,12 +76,14 @@
       const popupOptions = {
         'className': 'popUp',
       }
+      const marker_arr = []
       new_arr.forEach(el => {
         lat = el.latitude.includes('N')? `${el.latitude.split('-')[1].replace('N','')}`: `-${el.latitude.split('-')[1].replace('S','')}`;
         for(let [key,val] of Object.entries(el)){
           if(key*1 == key){
             if(val != -9999){
-              L.marker([lat,key],{icon: icon}).addTo(map).bindPopup(`${val/100}°C`,popupOptions);
+              let marker1 = L.marker([lat,key],{icon: icon}).addTo(map).bindPopup(`${val/100}°C`,popupOptions);
+              marker_arr.push(marker1);
             }
           }
         }
@@ -89,7 +91,17 @@
       const onmapClick = function(e){
         map.setView([latitude, longitude], 5);
       }
+      const onmousein = function(e){
+        e.target.openPopup();
+      }
+      const onmouseout = function(e){
+        e.target.closePopup();
+      }
       map.on('click', onmapClick);
+      marker_arr.forEach(marker => {
+        marker.on('mouseover', onmousein);
+        marker.on('mouseout', onmouseout);
+      })
     </script>
   </body>
 </html>
