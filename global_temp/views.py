@@ -12,9 +12,10 @@ def temp_detail(request):
         year = request.POST.get('year')
         year_obj = Year.objects.filter(year=year).first()
         monthID = request.POST.get('monthID')
+        lst = ['', 'January','February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October', 'November', 'December']
         temps = Temperature.objects.filter(year=year_obj.id, month=monthID).values()
         
-    return render(request, 'global_temp/temperature_details.html', {'temp': temps, 'yr':year, 'month':monthID})
+    return render(request, 'global_temp/temperature_details.html', {'lst':lst[int(monthID)], 'temp': temps, 'yr':year, 'month':monthID})
 
 
 def map_detail(request, year, month):
