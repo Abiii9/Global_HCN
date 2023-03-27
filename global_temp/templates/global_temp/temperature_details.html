@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>View Temperature of various locations by month</h1>
-  
+ <p>Missing values are represented by the value -9999. The data are formatted by year, month, latitude and longitude. There are 72 longitude grid values per line -- each grid is labeled as a concatenation of "lon", "w" or "e", then the degree. The latitude is captured in the "lat" field where the value indicates the lower bound of a grid cell (e.g. 85 indicates 85-90N whereas -90 indicates 85-90S). Longitude values are written from 180°W to 180°E, and latitude values from 90°N to 90°S.</p>
  <p><b>The year : {{yr}}</p>
 
  <p>Month : {{lst}}</p></b>
