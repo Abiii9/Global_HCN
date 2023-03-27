@@ -21,9 +21,6 @@
       .attribution-icon {
         height: 20px;
       }
-      .leaflet-tile {
-        filter: invert(100%);
-      }
       .popUp .leaflet-popup-content-wrapper,
       .popUp .leaflet-popup-tip
       {
@@ -83,8 +80,9 @@
         lat = el.latitude.includes('N')? `${el.latitude.split('-')[1].replace('N','')}`: `-${el.latitude.split('-')[1].replace('S','')}`;
         for(let [key,val] of Object.entries(el)){
           if(key*1 == key){
-            val = val === -9999? 'unknown': val/100
-            L.marker([lat,key],{icon: icon}).addTo(map).bindPopup(`${val}°C`,popupOptions);
+            if(val != -9999){
+              L.marker([lat,key],{icon: icon}).addTo(map).bindPopup(`${val/100}°C`,popupOptions);
+            }
           }
         }
       });
