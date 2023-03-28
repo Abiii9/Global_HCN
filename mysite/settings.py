@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w-*d9b+n92gce5)xd1d5khmtz!=(2krubz6vvzkfc(wl%w^$1i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['focusimpact-arizonanight-8000.codio-box.uk', 'analogcommon-spraybison-8000.codio-box.uk']
+ALLOWED_HOSTS = ['global-hcn.onrender.com','focusimpact-arizonanight-8000.codio-box.uk', 'analogcommon-spraybison-8000.codio-box.uk']
 CSRF_TRUSTED_ORIGINS = ['https://analogcommon-spraybison-8000.codio-box.uk', 'https://focusimpact-arizonanight-8000.codio-box.uk']
 
 
