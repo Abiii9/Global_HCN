@@ -1,18 +1,17 @@
-# global_temp/tests.py
+from django.test import Client, TestCase
+from global_temp.models import Year, Temperature
+from django.shortcuts import reverse
 
-from django.test import TestCase
-from django.urls import reverse
-
-from .models import Year, Temperature
-
-class GlobalTempViewTests(TestCase):
-    
-    def setUp(self):
-        Year.objects.get_or_create(id=2020, year=2020)
-
+class TemeratureViewTests(TestCase):
+    @classmethod
+    #setting up test data for the Year Model
+    def setUpTestData(cls):
+        Year.objects.create(year = 2001)
+        Year.objects.create(year = 2002)
+        year_obj1 = Year.objects.get(id=1)
         Temperature.objects.create(
-            year_id=2020,
-            latitude=-23.5,
+            year=year_obj1,
+            latitude='30-35S',
             month=1, 
             lon_175_180W = 2.5,
             lon_170_175W = 2.5,
@@ -87,16 +86,43 @@ class GlobalTempViewTests(TestCase):
             lon_10_15E = 2.5,
             lon_5_10E = 2.5,
             lon_0_5E = 2.5,
-            # Add other required fields with valid values
         )
-    
-    def test_temperature_view(self):
-        url = reverse('map_detail', args=[2020, 2])
-        response = self.client.get(url)
+    #Testing index page
+    def test_indexview(self):
+        client = Client()
+        response = client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'global_temp/index.html')
+        self.assertContains(response, 'The Global Historical Climatology Network (GHCN) is an integrated database of climate that summaries from land surface stations across the globe')
+    #Testing temp_details page
+    def test_tempdetailsview(self):
+        client = Client()
+        response = client.post('/temp/details/', {'year':2001, 'monthID': 1})
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'global_temp/temperature_details.html')
+        self.assertContains(response, 'Missing values are represented by the value -9999')
 
+    #Testing the map page
+    def test_mapview(self):
+        client = Client()
+        response = client.get('/temp/map/2001/1')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'global_temp/temp.html')
+        self.assertContains(response, 'OpenStreetMap')
+    
+    #Testing the chart page
+    def test_chartview(self):
+        client = Client()
+        response = client.get('/temp/charts/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'global_temp/charts.html')
+        self.assertContains(response, 'month')
+    #Testing the values in the response of map_details page
+    def test_temperature_view(self):
+        url = reverse('map_detail', args=[2002, 2])
+        response = self.client.get(url)
         # Check if the status code is 200
         self.assertEqual(response.status_code, 200)
-
         # Check if the content matches the expected output
         # You can use response.content or response.context to check the returned content
         # For example, if you expect the lat and lon_165_170W values in the response:
