@@ -41,3 +41,7 @@ def chart_processing(request):
         return render(request,'global_temp/charts.html', {'data_list': data, 'latitude': latitude, 'longitude': longitude, 'month': Month_list[int(month)], 'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
     else:
         return render(request, 'global_temp/charts.html',{'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
+
+
+def about(request):
+    return render(request, 'global_temp/about.html')
