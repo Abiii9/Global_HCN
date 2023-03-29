@@ -1,37 +1,203 @@
 {% extends "base.html" %}
 {% block title %} View Temperature by month {% endblock %}
-
 {% block content %}
-<h1>View Temperature of various locations by month</h1>
+<h3>Monthly Temperature records</h3>
  <p>Missing values are represented by the value -9999. The data are formatted by year, month, latitude and longitude. There are 72 longitude grid values per line -- each grid is labeled as a concatenation of "lon", "w" or "e", then the degree. The latitude is captured in the "lat" field where the value indicates the lower bound of a grid cell (e.g. 85 indicates 85-90N whereas -90 indicates 85-90S). Longitude values are written from 180°W to 180°E, and latitude values from 90°N to 90°S.</p>
- <p><b>The year : {{yr}}</p>
-
+ <p><b>The year : {{yr}}</b></p>
  <p>Month : {{lst}}</p></b>
- <div id="map" style="display:flex; justify-content:flex-end; width:94%; padding:50; margin:0 0 20px 0;">
-   <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View"></a>
-   
+ <form action="{% url 'temp_detail' %}" method="POST">
+  {% csrf_token %}
+  <select name="year" id="year" offset={-150}>
+    <option value="" disabled selected>{{yr}}</option>
+  {% for year_obj in years %}
+  <option value={{year_obj.year}}>{{year_obj}}</option>
+  {%endfor%}
+   </select>
+
+   <select name="monthID">
+     <option value="" disabled selected>{{lst}}</option>
+     <option value="1">January</option>
+     <option value="2">February</option>
+     <option value="3">March</option>
+     <option value="4">April</option>
+     <option value="5">May</option>
+     <option value="6">June</option>
+     <option value="7">July</option>
+     <option value="8">August</option>
+     <option value="9">September</option>
+     <option value="10">October</option>
+     <option value="11">November</option>
+     <option value="12">December</option>
+    </select>
+    <button type="submit" value="Submit">Submit</button>
+</form> 
+
+ <div id="map" style="display:flex; justify-content:flex-end;  margin:0 0 20px 20px;">
+   <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View" style="font-weight:bold; width:120px; height:50px; border:1px solid black; border-radius:5px; background-color:lemonchiffon;"></a>
+
+  
  </div>
 
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-  <table class="table-bordered mb-0">
-        <th>Latitude</th>
-        <th>lon_175_180W</th>
-        <th>lon_170_175W</th>
-        <th>lon_165_170W</th>
-        <th>lon_160_165W</th>
-        
+  <table class="table-bordered mb-0 ">
+     <thead>
+      <tr class="p-3">
+        <th class="px-3">Latitude</th>
+        <th class="px-3">lon_175_180W</th>
+        <th class="px-3">lon_170_175W</th>
+        <th class="px-3">lon_165_170W</th>
+        <th class="px-3">lon_160_165W</th>
+        <th class="px-3">lon_155_160W</th>
+        <th class="px-3">lon_150_155W</th>
+        <th class="px-3">lon_145_150W</th>
+        <th class="px-3">lon_140_145W </th>
+        <th class="px-3">lon_135_140W </th>
+        <th class="px-3">lon_130_135W</th>
+        <th class="px-3">lon_125_130W </th>
+        <th class="px-3">lon_120_125W</th>
+        <th class="px-3">lon_115_120W </th>
+        <th class="px-3">lon_110_115W</th>
+        <th class="px-3">lon_105_1>10W </th>
+        <th class="px-3">lon_100_105W </th>
+        <th class="px-3">lon_95_100W </th>
+        <th class="px-3">lon_90_95W</th>
+        <th class="px-3">lon_85_90W </th>
+        <th>lon_80_85W </th>
+         <th>lon_75_80W </th>
+        <th> lon_70_75W </th>
+        <th> lon_65_70W </th>
+        <th>lon_60_65W </th>
+        <th>lon_55_60W </th>
+        <th>lon_50_55W </th>
+        <th>lon_45_50W</th> 
+        <th>lon_40_45W </th>
+        <th>lon_35_40W </th>
+        <th>lon_30_35W </th>
+        <th>lon_25_30W </th>
+        <th>lon_20_25W </th>
+        <th>lon_15_20W </th>
+        <th>lon_10_15W </th>
+        <th>lon_5_10W </th>
+        <th>lon_0_5W </th>
+        <th>lon_175_180E</th>
+        <th>lon_170_175E </th>
+        <th>lon_165_170E </th>
+        <th>lon_160_165E</th> 
+        <th>lon_155_160E </th>
+        <th>lon_150_155E </th>
+        <th>lon_145_150E </th>
+        <th>lon_140_145E</th>
+        <th>lon_135_140E</th>
+        <th>lon_130_135E </th>
+        <th>lon_125_130E </th>
+        <th>lon_120_125E </th>
+        <th>lon_115_120E </th>
+        <th>lon_110_115E </th>
+        <th>lon_105_110E </th>
+        <th>lon_100_105E </th>
+        <th>lon_95_100E </th>
+        <th>lon_90_95E</th> 
+        <th>lon_85_90E </th>
+        <th>lon_80_85E </th>
+        <th>lon_75_80E </th>
+        <th>lon_70_75E </th>
+        <th>lon_65_70E </th>
+        <th>lon_60_65E </th>
+        <th>lon_55_60E </th>
+        <th>lon_50_55E </th>
+        <th>lon_45_50E </th>
+        <th>lon_40_45E </th>
+        <th>lon_35_40E </th>
+        <th>lon_30_35E </th>
+        <th>lon_25_30E </th>
+        <th>lon_20_25E </th>
+        <th>lon_15_20E </th>
+        <th>lon_10_15E </th>
+        <th>lon_5_10E </th>
+        <th>lon_0_5E </th>
+      </tr>
+    </thead>
     {% for t in temp %}
     <tr>
      <td>{{t.latitude}}</td>
-     <td>{{t.lon_175_180W}}</td>
+     <td >{{t.lon_175_180W}}</td>
      <td>{{t.lon_170_175W}}</td>
      <td>{{t.lon_165_170W}}</td>
      <td>{{t.lon_160_165W}}</td>
+     <td>{{t.lon_155_160W}}</td>
+     <td>{{t.lon_150_155W}}</td>
+     <td>{{t.lon_145_150W}}</td>
+     <td>{{t.lon_140_145W}}</td>
+     <td>{{t.lon_135_140W}}</td>
+     <td>{{t.lon_130_135W}}</td>
+     <td>{{t.lon_125_130W}}</td>
+     <td>{{t.lon_120_125W}}</td>
+     <td>{{t.lon_115_120W}}</td>
+     <td>{{t.lon_110_115W}}</td>
+     <td>{{t.lon_105_110W}}</td>
+     <td>{{t.lon_100_105W}}</td>
+     <td>{{t.lon_95_100W}}</td>
+     <td>{{t.lon_90_95W}}</td>
+     <td>{{t.lon_85_90W}}</td>
+     <td>{{t.lon_80_85W}}</td>
+     <td>{{t.lon_75_80W}}</td>
+     <td>{{t.lon_70_75W}}</td>
+     <td>{{t.lon_65_70W}}</td>
+     <td>{{t.lon_60_65W}}</td>
+     <td>{{t.lon_55_60W}}</td>
+     <td>{{t.lon_50_55W}}</td>
+     <td>{{t.lon_45_50W}}</td>
+     <td>{{t.lon_40_45W}}</td>
+     <td>{{t.lon_35_40W}}</td>
+     <td>{{t.lon_30_35W}}</td>
+     <td>{{t.lon_25_30W}}</td>
+     <td>{{t.lon_20_25W}}</td>
+     <td>{{t.lon_15_20W}}</td>
+     <td>{{t.lon_10_15W}}</td>
+     <td>{{t.lon_5_10W}}</td>
+     <td>{{t.lon_0_5W}}</td>
+
+     <td>{{t.lon_175_180E}}</td>
+     <td>{{t.lon_170_175E}}</td>
+     <td>{{t.lon_165_170E}}</td>
+     <td>{{t.lon_160_165E}}</td>
+     <td>{{t.lon_155_160E}}</td>
+     <td>{{t.lon_150_155E}}</td>
+     <td>{{t.lon_145_150E}}</td>
+     <td>{{t.lon_140_145E}}</td>
+     <td>{{t.lon_135_140E}}</td>
+     <td>{{t.lon_130_135E}}</td>
+     <td>{{t.lon_125_130E}}</td>
+     <td>{{t.lon_120_125E}}</td>
+     <td>{{t.lon_115_120E}}</td>
+     <td>{{t.lon_110_115E}}</td>
+     <td>{{t.lon_105_110E}}</td>
+     <td>{{t.lon_100_105E}}</td>
+     <td>{{t.lon_95_100E}}</td>
+     <td>{{t.lon_90_95E}}</td>
+     <td>{{t.lon_85_90E}}</td>
+     <td>{{t.lon_80_85E}}</td>
+     <td>{{t.lon_75_80E}}</td>
+     <td>{{t.lon_70_75E}}</td>
+     <td>{{t.lon_65_70E}}</td>
+     <td>{{t.lon_60_65E}}</td>
+     <td>{{t.lon_55_60E}}</td>
+     <td>{{t.lon_50_55E}}</td>
+     <td>{{t.lon_45_50E}}</td>
+     <td>{{t.lon_40_45E}}</td>
+     <td>{{t.lon_35_40E}}</td>
+     <td>{{t.lon_30_35E}}</td>
+     <td>{{t.lon_25_30E}}</td>
+     <td>{{t.lon_20_25E}}</td>
+     <td>{{t.lon_15_20E}}</td>
+     <td>{{t.lon_10_15E}}</td>
+     <td>{{t.lon_5_10E}}</td>
+     <td>{{t.lon_0_5E}}</td>
       </tr>
     {%endfor %}
        
     </table>
-    </div>
+ </div>
    {%endblock%}
 </body>
 </html>

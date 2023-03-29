@@ -7,7 +7,6 @@ Month_list = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July'
 
 
 def year_list(request):
-    global years
     years = Year.objects.all()
     return render(request, 'global_temp/index.html', {'years': years})
 
@@ -17,8 +16,8 @@ def temp_detail(request):
         year_obj = Year.objects.filter(year=year).first()
         monthID = request.POST.get('monthID')
         temps = Temperature.objects.filter(year=year_obj.id, month=monthID).values()
-        
-    return render(request, 'global_temp/temperature_details.html', {'lst':Month_list[int(monthID)], 'temp': temps, 'yr':year, 'month':monthID, 'longitude_range': range(5,185,5)})
+        years = Year.objects.all()
+    return render(request, 'global_temp/temperature_details.html', {'years':years, 'lst':Month_list[int(monthID)], 'temp': temps, 'yr':year, 'month':monthID, 'longitude_range': range(5,185,5)})
 
 
 def map_detail(request, year, month):

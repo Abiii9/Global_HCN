@@ -2,10 +2,10 @@
 {% block title %} Global Temperature Tracking{% endblock %}
 {% block style %}
       <style>
-            .container{
+            .conta{
             background-image: none;
             }
-            .container::after{
+            .conta::after{
             background-color: white;
             }
       </style>
@@ -15,7 +15,7 @@
 <h1 style=" color:black; ">Global temperature</h1>
 <form action="#" method="post">
       {% csrf_token %}
-      <label style=" color:black;" for="latitude">Latitute: </label>
+      <label style=" color:black;" for="latitude"><b>Latitute: </b></label>
       <select name="latitude" id="latitude" style="margin:20px;">
             <option disabled selected value> -- select an option -- </option>
             {% for num in latitude_range %}
@@ -23,7 +23,7 @@
             <option value={{num|add:"-5"}}-{{num}}S>{{num|add:"-5"}}-{{num}}S</option>
             {% endfor %}
       </select>
-      <label style=" color:black; " for="longitude">longitute: </label>
+      <label style=" color:black; " for="longitude"><b>longitute:</b> </label>
       <select name="longitude" id="longitude" style="margin:20px;">
             <option disabled selected value> -- select an option -- </option>
             {% for num in longitude_range %}
@@ -31,7 +31,7 @@
             <option value={{num|add:"-5"}}_{{num}}E>{{num|add:"-5"}}_{{num}}E</option>
             {% endfor %}
       </select>
-      <label style=" color:black; " for="month">Month: </label>
+      <label style=" color:black; " for="month"><b>Month: </b></label>
       <select name="month" id="month" style="margin:20px;">
             <option disabled selected value> -- select an option -- </option>
             <option value="1">January</option>
@@ -47,10 +47,11 @@
            <option value="11">November</option>
            <option value="12">December</option>
       </select>
-      <br><br>
+      
       <input type="submit" value="Submit">
 </form>
-<input id="button" type="button" value="change chart type">
+<input id="button" type="button" value="change chart type" style="margin-top:20px;">
+<center>
 <div id="chart-wrapper">
 <canvas id="myChart"></canvas>
 </div>

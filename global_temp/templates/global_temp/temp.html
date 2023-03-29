@@ -1,22 +1,19 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Individual temp by year Tracking</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-      crossorigin=""
-    ></script>
-    <style>
-      #map {
+{% block title %} Global Temperature Tracking{% endblock %}
+{% block style %}
+      <style>
+            .conta{
+            background-image: none;
+            color:black;
+            }
+            .conta::after{
+            background-color: white;
+            }
+          #map {
         height: 700px;
+        border:2px solid white;
+        border-radius: 10px;
       }
       .attribution-icon {
         height: 20px;
@@ -27,14 +24,30 @@
         background-color: black;
         color: white;
       }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <div class="attribution-icon">
-      <a href="https://www.flaticon.com/free-icons/geo" title="geo icons"
-        >Geo icons created by Alona Dzhulai - Flaticon</a
-      >
+      </style>
+        <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+ {% endblock %}
+    
+ {% block content %}
+ 
+  
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+   
+<h1><center>Map View </h1>
+ <p>This is the map view of each location showing the temperature variation at each location. The data are temperature anomalies in degrees Celsius.</p>
+   <p>The gridded anomalies were produced from GHCN-M bias corrected data. Each month of data consists of 2,592 gridded data points produced on a 5° by 5° basis for the entire globe (72 longitude by 36 latitude grid boxes) </p>
+ <p> Zoom in to locate a pointer which points to a given location and hover over it to view the temperature in Celsius.</p>
+    <div id="map">
+    
     </div>
     <script type="text/javascript">
       let temp_json = {{temps|safe}};
@@ -103,5 +116,4 @@
         marker.on('mouseout', onmouseout);
       })
     </script>
-  </body>
-</html>
+{%endblock%}
