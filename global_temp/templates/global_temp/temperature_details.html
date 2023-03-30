@@ -7,15 +7,13 @@
  <p>Month : {{lst}}</p></b>
  <form action="{% url 'temp_detail' %}" method="POST">
   {% csrf_token %}
-  <select name="year" id="year" offset={-150}>
-    <option value="" disabled selected>{{yr}}</option>
+  <select name="year" id="year">
   {% for year_obj in years %}
   <option value={{year_obj.year}}>{{year_obj}}</option>
   {%endfor%}
    </select>
 
    <select name="monthID">
-     <option value="" disabled selected>{{lst}}</option>
      <option value="1">January</option>
      <option value="2">February</option>
      <option value="3">March</option>
@@ -34,14 +32,11 @@
 
  <div id="map" style="display:flex; justify-content:flex-end;  margin:0 0 20px 20px;">
    <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View" style="font-weight:bold; width:120px; height:50px; border:1px solid black; border-radius:5px; background-color:lemonchiffon;"></a>
-
   
  </div>
-
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
   <table class="table-bordered mb-0 ">
      <thead>
-      <tr class="p-3">
         <th class="px-3">Latitude</th>
         <th class="px-3">lon_175_180W</th>
         <th class="px-3">lon_170_175W</th>
@@ -199,5 +194,3 @@
     </table>
  </div>
    {%endblock%}
-</body>
-</html>
