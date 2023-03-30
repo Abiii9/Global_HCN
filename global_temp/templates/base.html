@@ -37,8 +37,16 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2
         <div class="collapse navbar-collapse" id="navbar" >
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link"  id="customer" href="/">Home</a>
-                <a class="nav-item nav-link" id="order" href="/temp/charts/">Charts</a>
-                <a class="nav-item nav-link" id="product" href="/about">About Us</a>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Data
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/temp/charts/">Tables</a>
+                    <a class="dropdown-item"  href="/temp/charts/">Charts</a>
+                  </div>
+                </div>
+                <a class="nav-item nav-link"  href="/about">About Us</a>
             </div>
         </div>
     </nav>

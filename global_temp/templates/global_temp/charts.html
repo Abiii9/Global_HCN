@@ -4,6 +4,7 @@
       <style>
             .conta{
             background-image: none;
+            background-color: #99CCFF;
             }
             .conta::after{
             background-color: white;
@@ -15,8 +16,8 @@
 <h1 style=" color:black; ">Global temperature</h1>
 <form action="#" method="post">
       {% csrf_token %}
-      <label style=" color:black;" for="latitude"><b>Latitute: </b></label>
-      <select name="latitude" id="latitude" style="margin:20px;">
+      <label style=" color:black;" for="latitude" ><b>Latitute: </b></label>
+      <select name="latitude" id="latitude" style="margin:20px;" required>
             <option disabled selected value> -- select an option -- </option>
             {% for num in latitude_range %}
             <option value={{num|add:"-5"}}-{{num}}N>{{num|add:"-5"}}-{{num}}N</option>
@@ -24,7 +25,7 @@
             {% endfor %}
       </select>
       <label style=" color:black; " for="longitude"><b>longitute:</b> </label>
-      <select name="longitude" id="longitude" style="margin:20px;">
+      <select name="longitude" id="longitude" style="margin:20px;" required>
             <option disabled selected value> -- select an option -- </option>
             {% for num in longitude_range %}
             <option value={{num|add:"-5"}}_{{num}}W>{{num|add:"-5"}}_{{num}}W</option>
@@ -32,7 +33,7 @@
             {% endfor %}
       </select>
       <label style=" color:black; " for="month"><b>Month: </b></label>
-      <select name="month" id="month" style="margin:20px;">
+      <select name="month" id="month" style="margin:20px;" required>
             <option disabled selected value> -- select an option -- </option>
             <option value="1">January</option>
            <option value="2">February</option>
@@ -50,7 +51,8 @@
       
       <input type="submit" value="Submit">
 </form>
-<input id="button" type="button" value="change chart type" style="margin-top:20px;">
+<p style=" color:black; margin-top:20px; margin-left:350px"> Click on change chart type buttom to change the chart from bar to line and viceversa</p>
+<input id="button" type="button" value="change chart type" style="margin-bottom:20px;  margin-left:600px">
 <center>
 <div id="chart-wrapper">
 <canvas id="myChart"></canvas>

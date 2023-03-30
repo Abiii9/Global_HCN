@@ -6,13 +6,15 @@
  
  <form action="{% url 'temp_detail' %}" method="POST">
   {% csrf_token %}
-  <select name="year" id="year">
-  {% for year_obj in years %}
-  <option value={{year_obj.year}}>{{year_obj}}</option>
+  <select name="year" id="year" required style="margin-left:40%">
+   <option disabled selected value>{{yr}}</option>
+  {% for year in years %}
+  <option value={{year}}>{{year}}</option>
   {%endfor%}
    </select>
 
-   <select name="monthID">
+   <select name="monthID" required>
+       <option disabled selected value>{{lst}}</option>
      <option value="1">January</option>
      <option value="2">February</option>
      <option value="3">March</option>
@@ -29,11 +31,11 @@
     <button type="submit" value="Submit">Submit</button>
 </form> 
 
- <div id="map" style="display:flex; justify-content:flex-end;  margin:0 0 20px 20px;">
-   <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View" style="font-weight:bold; width:120px; height:50px; border:1px solid black; border-radius:5px; background-color:lemonchiffon;"></a>
+
+   <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View" style="font-weight:bold; width:120px; height:50px; border:1px solid black; border-radius:5px; background-color:lemonchiffon; margin-left:45% ; margin-top:10px"></a>
   
- </div>
- <h3> Date: </h3> <h5>{{lst}} {{yr}}</h5>
+
+ <h4>{{lst}} {{yr}}</h4>
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
   <table class="table-bordered mb-0 " style="overflow:auto;">
      <thead>
