@@ -3,8 +3,7 @@
 {% block content %}
 <h3>Monthly Temperature records</h3>
  <p>Missing values are represented by the value -9999. The data are formatted by year, month, latitude and longitude. There are 72 longitude grid values per line -- each grid is labeled as a concatenation of "lon", "w" or "e", then the degree. The latitude is captured in the "lat" field where the value indicates the lower bound of a grid cell (e.g. 85 indicates 85-90N whereas -90 indicates 85-90S). Longitude values are written from 180°W to 180°E, and latitude values from 90°N to 90°S.</p>
- <p><b>The year : {{yr}}</b></p>
- <p>Month : {{lst}}</p></b>
+ 
  <form action="{% url 'temp_detail' %}" method="POST">
   {% csrf_token %}
   <select name="year" id="year">
@@ -34,8 +33,9 @@
    <a href="{% url 'map_detail' year=yr month=month %}"><input type="button" value="Map View" style="font-weight:bold; width:120px; height:50px; border:1px solid black; border-radius:5px; background-color:lemonchiffon;"></a>
   
  </div>
+ <h3> Date: </h3> <h5>{{lst}} {{yr}}</h5>
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-  <table class="table-bordered mb-0 ">
+  <table class="table-bordered mb-0 " style="overflow:auto;">
      <thead>
         <th class="px-3">Latitude</th>
         <th class="px-3">lon_175_180W</th>
