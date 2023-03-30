@@ -6,5 +6,6 @@ urlpatterns = [
     path('about', views.about, name = 'about' ),
     path('temp/details/', views.temp_detail, name='temp_detail'),
     path('temp/map/<int:year>/<str:month>', views.map_detail, name='map_detail'),
-    path('temp/charts/', views.chart_processing, name='chart_processing'),]
-    
+    path('temp/charts/', views.chart_processing, name='chart_processing'),
+    path('temp/temperature_details/', views.temperature_details, name = 'temperature_details' ),
+]

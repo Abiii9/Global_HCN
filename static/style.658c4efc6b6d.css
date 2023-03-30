@@ -1,0 +1,73 @@
+
+  
+.conta{
+    background-image: url("7.959f2befdf31.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    isolation: isolate;
+    position: relative;
+    color: white;
+    max-width: 1500px;
+    min-height: 1000px;
+    padding: 30px;
+   
+} 
+
+.conta::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index:-1;
+    opacity: 0.8;
+    background-color: rgb(3, 3, 0.1);
+   
+}
+.nav{
+    font-size:20px;
+     background-color: darkslategrey; 
+     height:100px;
+}
+
+.my-custom-scrollbar {
+position: absolute;
+width: 1500px;
+height: 500px;
+overflow:auto;
+
+
+
+
+}
+.table-wrapper-scroll-y{
+display: block;
+}
+
+table{
+    position: relative;
+   /* margin-top:-550px; */
+
+
+}
+table th {
+    position:sticky;
+    top:0;
+    z-index:1;
+    border-top:0;
+    background-color: cadetblue;
+
+ 
+}
+table tr td{
+   padding:5px 0 0 0;
+}
+
+#map{
+    text-align: right;
+}
+
+#chart-wrapper {
+            display: inline-block;
+            position: relative;
+            width: 1200px;
+    
+}

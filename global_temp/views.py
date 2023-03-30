@@ -28,12 +28,16 @@ def get_temperatures(request,year,month):
     return temps
 
 def temp_detail(request):
+    years = get_year_list(request)
+    year = '2000'
+    month = '1'
+    temps = get_temperatures(request, year, month)
     if request.method == "POST":
         year = request.POST.get('year')
         month = request.POST.get('monthID')
         temps = get_temperatures(request, year, month)
-        years = get_year_list(request)
     return render(request, 'global_temp/temperature_details.html', {'years':years, 'lst':Month_list[int(month)], 'temp': temps, 'yr':year, 'month':month, 'longitude_range': range(5,185,5)})
+
 
 
 def map_detail(request, year, month):
@@ -62,3 +66,7 @@ def chart_processing(request):
 
 def about(request):
     return render(request, 'global_temp/about.html')
+
+
+def temperature_details(request):
+    return render(request, 'global_temp/temperature_details.html')

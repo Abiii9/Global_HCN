@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w-*d9b+n92gce5)xd1d5khmtz!=(2krubz6vvzkfc(wl%w^$1i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['global-hcn.onrender.com','focusimpact-arizonanight-8000.codio-box.uk', 'analogcommon-spraybison-8000.codio-box.uk']
 CSRF_TRUSTED_ORIGINS = ['https://analogcommon-spraybison-8000.codio-box.uk', 'https://focusimpact-arizonanight-8000.codio-box.uk']
@@ -118,9 +118,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
