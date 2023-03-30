@@ -39,8 +39,7 @@ def temp_detail(request):
 def map_detail(request, year, month):
     temps = get_temperatures(request,year,month)
     res_temps = [temp for temp in temps]
-    print(month)
-    return render(request, 'global_temp/temp.html', {'temps': res_temps, 'yr':year, 'month':month})
+    return render(request, 'global_temp/map.html', {'temps': res_temps, 'yr':year, 'month':month, 'month_name':Month_list[int(month)]})
 
 def chart_processing(request):
     data = []
@@ -50,14 +49,11 @@ def chart_processing(request):
         longitude = "lon_"+request.POST.get('longitude', '')
         if latitude+'_'+month+'_temps' in request.session:
             temps = request.session[latitude+'_'+month+'_temps']
-            print("in session")
         else:
             temps = list(Temperature.objects.filter(latitude=latitude, month=month).values())
             request.session[latitude+'_'+month+'_temps'] = temps
-            print(latitude,month,len(temps))
-            print("not in session")
         for temp in temps:
-            data.append(temp[longitude])
+            data.append(temp[longitude]/100)
 
         return render(request,'global_temp/charts.html', {'data_list': data, 'latitude': latitude, 'longitude': longitude, 'month': Month_list[int(month)], 'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
     else:
