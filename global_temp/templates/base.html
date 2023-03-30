@@ -24,6 +24,18 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="/static/style.css" >
+    <style>
+        .bgcolor{
+            background-color: inherit;
+        }
+        /*Nav bar media query*/
+        @media(max-width: 991.5px){
+            .bgcolor{
+                background-color: #000;
+                border-radius: 5px;
+            }
+        }
+    </style>
         {% block style %} {%endblock %}
 </head>
 
@@ -34,8 +46,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand float-left pl-3" href="/" style="font-size:24px;"> GHCN Limited</a>
-        <div class="collapse navbar-collapse" id="navbar" >
-            <div class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="bgcolor navbar-nav ml-auto">
                 <a class="nav-item nav-link"  id="customer" href="/">Home</a>
                 <div class="dropdown">
                   <button class="btn nav-item nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:19px;">

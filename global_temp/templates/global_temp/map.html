@@ -122,24 +122,18 @@
           let form = document.getElementById('form');
           let var1 = document.getElementById('var1');
           let var2 = document.getElementById('var2');
-         // var1.value = e.v.lat;
-         // var2.value = e.v.lng;
           console.log(e.latlng);
           if (e.latlng.lat >=0){
               var1.value = e.latlng.lat-5+"-"+e.latlng.lat+"N";
-              console.log(e.latlng.lat-5+"-"+e.latlng.lat+"N");
           } else {
               let lat1 = Math.abs(e.latlng.lat);
               var1.value = lat1-5+"-"+lat1+"S";
-              console.log(lat1-5+"-"+lat1+"S");
           }
           if (e.latlng.lng >=0){
               var2.value = e.latlng.lng-5+"_"+e.latlng.lng+"E";
-              console.log(e.latlng.lng-5+"_"+e.latlng.lng+"E");
           } else {
               let lng1 = Math.abs(e.latlng.lng);
               var2.value = lng1-5+"_"+lng1+"W";
-              console.log(lng1-5+"_"+lng1+"W");
           }
           form.submit();
 
