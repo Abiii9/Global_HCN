@@ -20,3 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('global_temp.urls'))
 ]
+
+#handling the 404 error, calling the corresponding view function incase of error.
+handler404 = 'global_temp.views.error_404_view'
+#handling the 500 error, calling the corresponding view function incase of error.
+handler500 = 'global_temp.views.error_500_view'
