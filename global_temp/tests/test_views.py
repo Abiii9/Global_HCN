@@ -7,6 +7,7 @@ class TemeratureViewTests(TestCase):
     @classmethod
     #setting up test data for the Year Model
     def setUpTestData(cls):
+        Year.objects.create(year = 2000)
         Year.objects.create(year = 2001)
         Year.objects.create(year = 2002)
         year_obj1 = Year.objects.get(id=1)
@@ -98,7 +99,7 @@ class TemeratureViewTests(TestCase):
     #Testing temp_details page
     def test_tempdetailsview(self):
         client = Client()
-        response = client.post('/temp/details/', {'year':2002, 'monthID': 1})
+        response = client.post('/temp/details/', {'year':'2002', 'monthID': '1'})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/temperature_details.html')
         self.assertContains(response, 'Missing values are represented by the value -9999')
