@@ -10,7 +10,8 @@
     max-width: 1500px;
     min-height: 1000px;
     padding: 30px;
-   
+    
+  
 } 
 
 .conta::after{
@@ -68,6 +69,5 @@ table tr td{
 #chart-wrapper {
             display: inline-block;
             position: relative;
-            width: 1200px;
-    
+           
 }
