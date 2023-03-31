@@ -34,6 +34,7 @@ git clone "repo_link"
 Run the below command to install pyenv
 
 ```bash
+pyenv update
 pyenv install 3.10.7 # to install the pyenv on your server.
 ```
 
