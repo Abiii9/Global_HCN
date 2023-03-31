@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Year, Temperature
 
-# Register your models here.
+# Registering the models Year and Temerature to the admin interface.
 admin.site.register(Year)
 admin.site.register(Temperature)

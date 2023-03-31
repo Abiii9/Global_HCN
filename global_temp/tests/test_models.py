@@ -166,11 +166,14 @@ class TempModelTest(TestCase):
     #Testing the Year model
     def test_year(self):
         year = Year.objects.get(id=1)
+        #testing if the particular year attribute of the Year model is correct
         self.assertEqual(year.year,2001)
     #Testing the Temperature model
     def test_temperature(self):
+        #fetching the temperature objects with a particular id.
         temp1 = Temperature.objects.get(id=1)
         temp2 = Temperature.objects.get(id=2)
+        #testing if the values returned match with the expected value.
         self.assertEqual(temp1.lon_0_5E,21)
         self.assertEqual(temp2.year.id,2)
     #Testing the str method of the Year model.

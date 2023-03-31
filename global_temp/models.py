@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+#creating the Year model.
 
 class Year(models.Model):
     year = models.IntegerField()
@@ -8,7 +8,7 @@ class Year(models.Model):
     def __str__(self):
         return f'{self.year}'
 
-
+#creating the Temperature model.
 
 class Temperature(models.Model):
     year = models.ForeignKey(Year, on_delete=models.CASCADE)

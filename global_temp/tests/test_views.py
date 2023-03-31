@@ -93,13 +93,16 @@ class TemeratureViewTests(TestCase):
     def test_indexview(self):
         client = Client()
         response = client.get('/')
+        #testing if the status_code, template used and content of the response are correct.
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/index.html')
         self.assertContains(response, 'The Global Historical Climatology Network (GHCN) is an integrated database of climate that summaries from land surface stations across the globe')
     #Testing temp_details page
     def test_tempdetailsview(self):
         client = Client()
+        #passing the year and month values as POST request.
         response = client.post('/temp/details/', {'year':'2002', 'monthID': '1'})
+        #testing if the status_code, template used and content of the response are correct.
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/temperature_details.html')
         self.assertContains(response, 'Missing values are represented by the value -9999')
@@ -107,7 +110,9 @@ class TemeratureViewTests(TestCase):
     #Testing the map page
     def test_mapview(self):
         client = Client()
+        #sending parameter to the map page
         response = client.get('/temp/map/2001/1')
+        #testing if the status_code, template used and content of the response are correct.
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/map.html')
         self.assertContains(response, 'OpenStreetMap')
@@ -116,11 +121,13 @@ class TemeratureViewTests(TestCase):
     def test_chartview(self):
         client = Client()
         response = client.get('/temp/charts/')
+        #testing if the status_code, template used and content of the response are correct.
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/charts.html')
-        self.assertContains(response, 'month')
+        self.assertContains(response, 'Click on change chart type buttom to change the chart from bar to line and vicevers')
+    
     #Testing the values in the response of map_details page
-    def test_temperature_view(self):
+    def test_map_view(self):
         url = reverse('map_detail', args=[2002, 2])
         response = self.client.get(url)
         # Check if the status code is 200
