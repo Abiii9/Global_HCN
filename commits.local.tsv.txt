@@ -1,0 +1,54 @@
+3334ad7	sairaj nayak	Fri Mar 31 15:01:25 2023	comments added
+ee562b2	sairaj nayak	Fri Mar 31 14:38:01 2023	Read.me file added, minor changes to template files
+cd8dbbf	ABINAYA ELANGOVAN	Fri Mar 31 14:31:38 2023	added the comments to the python files
+d16030d	ABINAYA ELANGOVAN	Fri Mar 31 13:08:06 2023	cleared the errors from tests
+acb390d	ABINAYA ELANGOVAN	Fri Mar 31 12:45:06 2023	changed the temperatures method
+09007aa	sairaj nayak	Fri Mar 31 10:46:51 2023	Compare charts feature and axixs label added
+b0aec90	BERNADINE AMAKA EMMANUEL	Fri Mar 31 01:35:12 2023	modified the charts page and dropdown menu
+e0b4db0	ABINAYA ELANGOVAN	Fri Mar 31 00:10:41 2023	added error handling features
+7165144	ABINAYA ELANGOVAN	Thu Mar 30 21:09:21 2023	modified the menu
+81e7c92	BERNADINE AMAKA EMMANUEL	Thu Mar 30 15:02:02 2023	added drop down menu
+0eecd04	ABINAYA ELANGOVAN	Thu Mar 30 13:44:43 2023	added the admin interface
+dfd397f	sairaj nayak	Thu Mar 30 12:57:56 2023	 sessions added, charts view updated, onclick event added for map icon
+5be5571	BERNADINE AMAKA EMMANUEL	Thu Mar 30 11:55:18 2023	fixed the table whitespace error
+dabc34e	BERNADINE AMAKA EMMANUEL	Thu Mar 30 11:38:45 2023	more changes to temperature_details file
+7fdc8cf	BERNADINE AMAKA EMMANUEL	Thu Mar 30 11:07:59 2023	checking display
+788a0fb	BERNADINE AMAKA EMMANUEL	Wed Mar 29 13:43:39 2023	added about us page
+4d80119	BERNADINE AMAKA EMMANUEL	Wed Mar 29 13:22:52 2023	more update on template
+0eed0a7	BERNADINE AMAKA EMMANUEL	Wed Mar 29 13:18:29 2023	adding templates
+db3a3ad	BERNADINE AMAKA EMMANUEL	Wed Mar 29 13:15:36 2023	editing the template design
+ae7deeb	ABINAYA ELANGOVAN	Wed Mar 29 00:15:21 2023	created and merged test files
+14adffb	liuyang199738	Tue Mar 28 22:08:33 2023	Update tests.py
+d384abd	BERNADINE AMAKA EMMANUEL	Tue Mar 28 15:15:18 2023	addding whitenoise
+8f296b3	BERNADINE AMAKA EMMANUEL	Tue Mar 28 13:10:01 2023	settings for static files updated
+214fa87	BERNADINE AMAKA EMMANUEL	Tue Mar 28 12:57:36 2023	updated settings file
+b5c46bd	sairaj nayak	Tue Mar 28 12:49:02 2023	requirements file updated
+6af58ad	BERNADINE AMAKA EMMANUEL	Mon Mar 27 17:45:21 2023	done
+74410ae	BERNADINE AMAKA EMMANUEL	Mon Mar 27 17:30:24 2023	Merge branch 'main' of github.com:Abiii9/Global_HCN into main
+dee9c95	BERNADINE AMAKA EMMANUEL	Mon Mar 27 17:30:08 2023	style.css
+f26c5ee	sairaj nayak	Mon Mar 27 17:28:03 2023	charts processing added
+60278fe	BERNADINE AMAKA EMMANUEL	Mon Mar 27 15:15:57 2023	added month to temp list
+6c93778	ABINAYA ELANGOVAN	Mon Mar 27 15:11:30 2023	Merge branch 'main' of github.com:Abiii9/Global_HCN into main
+a9d1bca	ABINAYA ELANGOVAN	Mon Mar 27 13:54:06 2023	added the hover function
+4324631	BERNADINE AMAKA EMMANUEL	Mon Mar 27 13:15:09 2023	creating list of months
+06fd34c	BERNADINE AMAKA EMMANUEL	Mon Mar 27 12:54:24 2023	added missing value text in index
+066865e	ABINAYA ELANGOVAN	Mon Mar 27 12:49:39 2023	removed the unknown values from map
+e8a4669	BERNADINE AMAKA EMMANUEL	Mon Mar 27 12:34:39 2023	added links to map
+0035716	ABINAYA ELANGOVAN	Sun Mar 26 20:59:48 2023	Added working map final
+07cf8da	ABINAYA ELANGOVAN	Sun Mar 26 20:56:39 2023	Added working map
+e78df32	BERNADINE AMAKA EMMANUEL	Sat Mar 25 20:15:18 2023	added test file to view temp by month and year
+ac10d92	liuyang199738	Fri Mar 24 16:36:38 2023	Update tests.py
+a6bf2ce	ABINAYA ELANGOVAN	Fri Mar 24 16:14:14 2023	Added the map
+b8d1d75	BERNADINE AMAKA EMMANUEL	Fri Mar 24 15:20:13 2023	designing the templates
+74635bd	BERNADINE AMAKA EMMANUEL	Thu Mar 23 14:37:09 2023	Static folders
+c786b4f	sairaj nayak	Thu Mar 23 10:36:15 2023	intital commit of the project
+9cc7a72	sairaj nayak	Tue Mar 21 15:02:20 2023	removing unwanted filed
+f43942c	sairaj nayak	Tue Mar 21 14:37:17 2023	deleting old project
+1065b92	BERNADINE AMAKA EMMANUEL	Mon Mar 20 14:56:13 2023	first project setup
+de6242f	Abiii9	Mon Mar 20 14:27:59 2023	deleted test file
+c7bbe66	PETERMARK IKPEAZU	Mon Mar 6 10:15:55 2023	peter
+c27aa30	SAIRAJ NAIK GUGULOTH	Mon Mar 6 10:12:39 2023	sairaj commit
+1caad9a	BERNADINE AMAKA EMMANUEL	Mon Mar 6 10:05:45 2023	angel
+f4b48dd	BERNADINE AMAKA EMMANUEL	Mon Mar 6 09:58:19 2023	angel
+4734df6	ABINAYA ELANGOVAN	Mon Mar 6 09:54:49 2023	commit from abinaya
+f910f33	Abiii9	Mon Mar 6 09:44:17 2023	creating test file
