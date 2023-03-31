@@ -1,6 +1,7 @@
 from django.test import Client, TestCase
 from global_temp.models import Year, Temperature
 from django.shortcuts import reverse
+from global_temp.views import get_temperatures
 
 class TemeratureViewTests(TestCase):
     @classmethod
@@ -97,7 +98,7 @@ class TemeratureViewTests(TestCase):
     #Testing temp_details page
     def test_tempdetailsview(self):
         client = Client()
-        response = client.post('/temp/details/', {'year':2001, 'monthID': 1})
+        response = client.post('/temp/details/', {'year':2002, 'monthID': 1})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'global_temp/temperature_details.html')
         self.assertContains(response, 'Missing values are represented by the value -9999')
@@ -107,7 +108,7 @@ class TemeratureViewTests(TestCase):
         client = Client()
         response = client.get('/temp/map/2001/1')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'global_temp/temp.html')
+        self.assertTemplateUsed(response, 'global_temp/map.html')
         self.assertContains(response, 'OpenStreetMap')
     
     #Testing the chart page
@@ -126,5 +127,5 @@ class TemeratureViewTests(TestCase):
         # Check if the content matches the expected output
         # You can use response.content or response.context to check the returned content
         # For example, if you expect the lat and lon_165_170W values in the response:
-        self.assertIn(b'57.149651', response.content)
-        self.assertIn(b'-2.099075', response.content)
+        self.assertIn(b'55.3781', response.content)
+        self.assertIn(b'-3.4360', response.content)

@@ -23,7 +23,7 @@ def get_temperatures(request,year,month):
         temps = request.session[str(year)+'_'+month]
     else:
         year_obj = Year.objects.filter(year=year).first()
-        temps = list(Temperature.objects.filter(year=year_obj.id, month=month).values())
+        temps = list(Temperature.objects.filter(year=year_obj, month=month).values())
         request.session[str(year)+'_'+month] = temps
     return temps
 
