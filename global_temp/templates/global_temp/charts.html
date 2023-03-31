@@ -15,10 +15,11 @@
 {% endblock %}
 {% block content %}
 
-<h1 style=" color:black; ">Global temperature</h1>
+<br>
+<h1 style=" color:black; margin-left:20px">Global temperature</h1>
 <form action="#" method="post">
       {% csrf_token %}
-      <label style=" color:black;" for="latitude" ><b>Latitute1: </b></label>
+      <label style=" color:black; margin-left:20px;" for="latitude"  ><b>Latitute1: </b></label>
       <select name="latitude" id="latitude" style="margin:20px;" required>
             <option disabled selected value> -- select an option -- </option>
             {% for num in latitude_range %}
@@ -52,7 +53,7 @@
       </select>
     <button type="submit" name="button" value="view">View</button>
     <br>
-    <label style=" color:black;" for="latitude2" ><b>Latitute2: </b></label>
+    <label style=" color:black; margin-left:20px;" for="latitude2" ><b>Latitute2: </b></label>
       <select name="latitude2" id="latitude2" style="margin:20px;" >
             <option disabled selected value> -- select an option -- </option>
             {% for num in latitude_range %}
@@ -87,12 +88,14 @@
       
         <button type="submit" name="button" value="compare">compare</button>
 </form>
-<p style=" color:black; margin-top:20px; margin-left:350px"> Click on change chart type buttom to change the chart from bar to line and viceversa</p>
-<input id="button" type="button" value="change chart type" style="margin-bottom:20px;  margin-left:600px">
 <center>
+    <br>
 <div id="chart-wrapper">
 <canvas id="myChart"></canvas>
 </div>
+
+    <input id="button" type="button" value="change chart type" style="margin-bottom:10px; margin-top:10px;  margin-left:7%">
+    <p style=" color:black; margin-left:100px "> *Click on change chart type button to change the chart from bar to line and vice versa</p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type= 'text/javascript'>
 const ctx = document.getElementById('myChart').getContext('2d');
@@ -119,12 +122,21 @@ let chart = new Chart(ctx, {
         options: {
             responsive: true,
             scales: {
+                    xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Year',
+                                fontSize: 30
+                              }
+                            }],
                     yAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Temperature in Celsius'
+                                labelString: 'Temperature in Celsius',
+                                fontSize: 30
                               }
                             }]
+
                     }
         }
 });

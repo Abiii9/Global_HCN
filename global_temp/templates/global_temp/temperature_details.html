@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% block title %} View Temperature by month {% endblock %}
 {% block content %}
+<br>
 <h3>Monthly Temperature records</h3>
  <p>Missing values are represented by the value -9999. The data are formatted by year, month, latitude and longitude. There are 72 longitude grid values per line -- each grid is labeled as a concatenation of "lon", "w" or "e", then the degree. The latitude is captured in the "lat" field where the value indicates the lower bound of a grid cell (e.g. 85 indicates 85-90N whereas -90 indicates 85-90S). Longitude values are written from 180°W to 180°E, and latitude values from 90°N to 90°S.</p>
  
  <form action="{% url 'temp_detail' %}" method="POST">
   {% csrf_token %}
-  <select name="year" id="year" required style="margin-left:40%">
-    <option disabled selected value>Select an option</option>
+  <select name="year" id="year" required >
+    <option disabled selected value>Year</option>
   {% for year in years %}
   <option value={{year}}>{{year}}</option>
   {%endfor%}
    </select>
 
-   <select name="monthID" required>
-     <option disabled selected value>Select an option</option>
+   <select name="monthID" style="margin:15px"required>
+     <option disabled selected value>Month</option>
      <option value="1">January</option>
      <option value="2">February</option>
      <option value="3">March</option>
