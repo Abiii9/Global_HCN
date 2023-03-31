@@ -57,23 +57,40 @@ def map_detail(request, year, month):
         #returning a custom 400 error template incase of a bad request.
         return render(request, 'global_temp/400.html')
 def chart_processing(request):
-    try:     
-        data = []
+    try:
+        chart_data = []
+        chart_data2 =[]
         if request.method == "POST":
             latitude = request.POST.get('latitude', '')
             month = request.POST.get('month', '')
             longitude = "lon_"+request.POST.get('longitude', '')
             if latitude+'_'+month+'_temps' in request.session:
-                temps = request.session[latitude+'_'+month+'_temps']
+                temp_data = request.session[latitude+'_'+month+'_temps']
             else:
-                temps = list(Temperature.objects.filter(latitude=latitude, month=month).values())
-                request.session[latitude+'_'+month+'_temps'] = temps
-            for temp in temps:
-                data.append(temp[longitude]/100)
+                temp_data = list(Temperature.objects.filter(latitude=latitude, month=month).values())
+                request.session[latitude+'_'+month+'_temps'] = temp_data
+            for temp in temp_data:
+                chart_data.append(temp[longitude]/100)
+            if request.POST.get('button','') == 'compare':
+                latitude2 = request.POST.get('latitude2', '')
+                month2 = request.POST.get('month2', '')
+                longitude2 = "lon_" + request.POST.get('longitude2', '')
+                if latitude2 + '_' + month2 + '_temps' in request.session:
+                    temp_data2 = request.session[latitude2 + '_' + month2 + '_temps']
+                else:
+                    temp_data2 = list(Temperature.objects.filter(latitude=latitude, month=month).values())
+                    request.session[latitude2 + '_' + month2 + '_temps'] = temp_data2
+                for temp in temp_data2:
+                    chart_data2.append(temp[longitude2] / 100)
+                return render(request, 'global_temp/charts.html',
+                              {'data_list': chart_data, 'data_list2': chart_data2, 'latitude': latitude,
+                               'longitude': longitude, 'month': Month_list[int(month)], 'latitude2': latitude2,
+                               'longitude2': longitude2, 'month2': Month_list[int(month2)],
+                               'latitude_range': range(5, 95, 5), 'longitude_range': range(5, 185, 5)})
 
-            return render(request,'global_temp/charts.html', {'data_list': data, 'latitude': latitude, 'longitude': longitude, 'month': Month_list[int(month)], 'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
+            return render(request,'global_temp/charts.html', {'data_list': chart_data,'data_list2': chart_data2, 'latitude': latitude, 'longitude': longitude, 'month': Month_list[int(month)], 'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
         else:
-            return render(request, 'global_temp/charts.html',{'data_list': data,'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
+            return render(request, 'global_temp/charts.html',{'data_list': chart_data,'data_list2': chart_data2,'latitude_range': range(5,95,5), 'longitude_range': range(5,185,5)})
     except:
         #returning a custom 400 error template incase of a bad request.
         return render(request, 'global_temp/400.html')
