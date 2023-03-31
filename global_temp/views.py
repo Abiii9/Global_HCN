@@ -71,8 +71,7 @@ def map_detail(request, year, month):
         #returning a custom 400 error template incase of a bad request.
         return render(request, 'global_temp/400.html')
 def chart_processing(request):
-    #This function is used to display a chart representation of the temperature variations in a location point
-    #over the years 2000 - 2014.
+    #This function process and forward the data required by charts.html template and returns the chart page back to the user.
     try:
         #initializing chart_data variables to an empty list.
         chart_data = []

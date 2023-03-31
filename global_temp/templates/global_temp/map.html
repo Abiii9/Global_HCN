@@ -59,7 +59,9 @@
     
     </div>
     <script type="text/javascript">
+    // convert to javascript jsons
       let temp_json = {{temps|safe}};
+      // Changing the json data to appropriate representation used by the fuction and stroing it in an array.
       const new_arr = temp_json.map(el => {
         let new_obj = {};
         for(let [key,val] of Object.entries(el)){
@@ -80,6 +82,7 @@
       });
       let latitude = 55.3781;
       let longitude = -3.4360;
+      // creating the map instance and setting the default view.
       let map = L.map('map').setView([latitude, longitude], 6);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -99,6 +102,7 @@
         'className': 'popUp',
       }
       const marker_arr = []
+      //adding the marker on the map
       new_arr.forEach(el => {
         lat = el.latitude.includes('N')? `${el.latitude.split('-')[1].replace('N','')}`: `-${el.latitude.split('-')[1].replace('S','')}`;
         for(let [key,val] of Object.entries(el)){
@@ -110,21 +114,27 @@
           }
         }
       });
+
+      // changes the view of the map
       const onmapClick = function(e){
         map.setView([latitude, longitude], 5);
       }
+
+      // opens the pop up on the target
       const onmousein = function(e){
         e.target.openPopup();
       }
+
+      // closes the pop up on the target
       const onmouseout = function(e){
         e.target.closePopup();
       }
 
+      // This function is to set the form's input value and submit it.
       function view_chart(e) {
           let form = document.getElementById('form');
           let var1 = document.getElementById('var1');
           let var2 = document.getElementById('var2');
-          console.log(e.latlng);
           if (e.latlng.lat >=0){
               var1.value = e.latlng.lat-5+"-"+e.latlng.lat+"N";
           } else {
@@ -141,7 +151,10 @@
 
         }
 
+      // Whenever you click in empty space on a map this is referred
       map.on('click', onmapClick);
+
+      // Adding event listener to each marker
       marker_arr.forEach(marker => {
         marker.on('mouseover', onmousein);
         marker.on('mouseout', onmouseout);

@@ -100,6 +100,8 @@
 <script type= 'text/javascript'>
 const ctx = document.getElementById('myChart').getContext('2d');
 const button = document.getElementById("button");
+
+//creating chart element
 let chart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -138,8 +140,10 @@ let chart = new Chart(ctx, {
                             }]
 
                     }
-        }
+             }
 });
+
+      // To change the chart type dynamically
       button.addEventListener("click", () => {
         chart.config.type = chart.config.type === "line" ? "bar" : "line";
         chart.update();

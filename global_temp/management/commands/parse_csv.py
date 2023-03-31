@@ -34,6 +34,7 @@ class Command(BaseCommand):
             reader = csv.reader(f, delimiter=",")
             next(reader)  # skip the header line
 
+            # parsing each row and inserting the values in appropriate model attribute.
             for row in reader:
                 print(row)
                 year = int(row[0])
@@ -115,7 +116,7 @@ class Command(BaseCommand):
                     lon_5_10E = int(row[40]),
                     lon_0_5E = int(row[39]),
                 )
-                temperature.save()
+                temperature.save() # saving the object in the database.
 
         print("data parsed successfully")
 
